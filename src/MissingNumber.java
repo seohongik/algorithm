@@ -2,11 +2,11 @@ import java.util.Arrays;
 
 public class MissingNumber {
 
-    public  int missingNumber(int[] nums) {
+    public int missingNumber(int[] nums) {
 
         Arrays.sort(nums);
 
-        if(Arrays.stream(nums).min().getAsInt()==0) {
+        if (Arrays.stream(nums).min().getAsInt() == 0) {
 
             int maxVal = Arrays.stream(nums).max().getAsInt() == nums.length ? Arrays.stream(nums).max().getAsInt() : nums.length;
 

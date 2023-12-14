@@ -4,8 +4,8 @@ public class MaxMathTest {
 
     public int[] maxMathTest(int[] answers) {
 
-        int[] one =   {1, 2, 3, 4, 5};
-        int[] two =   {2, 1, 2, 3, 2, 4,2,5};
+        int[] one = {1, 2, 3, 4, 5};
+        int[] two = {2, 1, 2, 3, 2, 4, 2, 5};
         int[] three = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
 
         List<Integer> oneList = Arrays.asList(Arrays.stream(one).boxed().toArray(Integer[]::new));
@@ -20,23 +20,23 @@ public class MaxMathTest {
         addTowList.addAll(twoList);
         addThreeList.addAll(threeList);
 
-        for(int i=0; i< answers.length; i++){
+        for (int i = 0; i < answers.length; i++) {
 
-            if(i==addOneList.size()){
+            if (i == addOneList.size()) {
                 addOneList.addAll(i, oneList);
             }
-            if(i==addTowList.size()){
+            if (i == addTowList.size()) {
                 addTowList.addAll(i, twoList);
             }
-            if(i==addThreeList.size()){
+            if (i == addThreeList.size()) {
                 addThreeList.addAll(i, threeList);
             }
 
         }
 
-        oneList=  addOneList.subList(0, answers.length);
-        twoList=  addTowList.subList(0, answers.length);
-        threeList=  addThreeList.subList(0, answers.length);
+        oneList = addOneList.subList(0, answers.length);
+        twoList = addTowList.subList(0, answers.length);
+        threeList = addThreeList.subList(0, answers.length);
 
         int count1 = 0;
         int count2 = 0;
@@ -56,43 +56,43 @@ public class MaxMathTest {
             }
 
         }
-        int max=Math.max(count1,Math.max(count2,count3));
+        int max = Math.max(count1, Math.max(count2, count3));
 
-        int[] answer ={};
+        int[] answer = {};
 
-        if(max==count1){
+        if (max == count1) {
 
-            answer=new int[]{1};
+            answer = new int[]{1};
         }
 
-        if(max==count2){
+        if (max == count2) {
 
-            answer=new int[]{2};
+            answer = new int[]{2};
         }
 
-        if(max==count3){
+        if (max == count3) {
 
-            answer=new int[]{3};
+            answer = new int[]{3};
         }
 
-        if(max==count1 && max==count2){
+        if (max == count1 && max == count2) {
 
-            answer=new int[]{1,2};
+            answer = new int[]{1, 2};
         }
 
-        if(max==count1 && max==count3){
+        if (max == count1 && max == count3) {
 
-            answer=new int[]{1,3};
+            answer = new int[]{1, 3};
         }
 
-        if(max==count2 && max==count3){
+        if (max == count2 && max == count3) {
 
-            answer=new int[]{2,3};
+            answer = new int[]{2, 3};
         }
 
-        if(max==count1 && max==count2 && max==count3){
+        if (max == count1 && max == count2 && max == count3) {
 
-            answer=new int[]{1,2,3};
+            answer = new int[]{1, 2, 3};
         }
 
         return answer;

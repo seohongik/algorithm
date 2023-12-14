@@ -5,7 +5,7 @@ public class PhoneCatMon {
 
     public int phoneCatMon(int[] nums) {
 
-        int selectAvailable = nums.length/2; //3
+        int selectAvailable = nums.length / 2; //3
 
         Map<Integer, List<Integer>> groupResult = Arrays.stream(nums).boxed().collect(Collectors.groupingBy(i -> i));
         List<List<Integer>> list_entries = groupResult.values().stream().collect(Collectors.toList());
@@ -21,23 +21,23 @@ public class PhoneCatMon {
         List<Integer> vector = new ArrayList<>();
 
         int index = 1;
-        while (vector.size()<selectAvailable){
+        while (vector.size() < selectAvailable) {
 
             List<Integer> entity = list_entries.get(index - 1);
 
-            if(!entity.isEmpty()){
+            if (!entity.isEmpty()) {
                 vector.add(entity.get(0));
                 entity.remove(0);
             }
 
 
-            if(index>=list_entries.size()){
-                index=0;
+            if (index >= list_entries.size()) {
+                index = 0;
             }
             index++;
         }
 
-        Set<Integer> set=vector.stream().collect(Collectors.toSet());
+        Set<Integer> set = vector.stream().collect(Collectors.toSet());
 
         return set.size();
     }

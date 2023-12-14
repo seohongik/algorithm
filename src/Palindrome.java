@@ -1,19 +1,19 @@
 public class Palindrome {
 
-    public  boolean isPalindrome(int x) {
+    public boolean isPalindrome(int x) {
 
-        String str=String.valueOf(x);
+        String str = String.valueOf(x);
 
-        StringBuffer sb=new StringBuffer();
+        StringBuffer sb = new StringBuffer();
 
         sb.append(str);
 
         sb.reverse();
 
-        if(str.equals(sb.toString())){
+        if (str.equals(sb.toString())) {
 
             return true;
-        }else {
+        } else {
             return false;
         }
 

@@ -10,7 +10,7 @@ public class SingleNumber {
         List<Integer> list = Arrays.stream(nums).boxed().collect(Collectors.toList());
         List<Integer> sub = new ArrayList<>();
         int result = Integer.MIN_VALUE;
-        for(int i=0, j=1; j<nums.length; i++,j++) {
+        for (int i = 0, j = 1; j < nums.length; i++, j++) {
             if (nums[i] == nums[j]) {
                 sub = list.subList(i, j + 1);
             }
@@ -19,9 +19,9 @@ public class SingleNumber {
                 result = nums[i];
             }
         }
-        if(result ==Integer.MIN_VALUE){
+        if (result == Integer.MIN_VALUE) {
 
-            result = nums[nums.length-1];
+            result = nums[nums.length - 1];
         }
         return result;
     }

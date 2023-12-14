@@ -13,7 +13,7 @@ public class Main {
 
         NoElaborateKeyMap noElaborateKeyMap = new NoElaborateKeyMap();
 
-        noElaborateKeyMap.solution(new String[]{"ABACD", "BCEFD"} , new String[]{"ABCD","AZB","AABB"} );
+        noElaborateKeyMap.solution(new String[]{"ABACD", "BCEFD"}, new String[]{"ABCD", "AZB", "AABB"});
 
     }
 

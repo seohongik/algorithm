@@ -3,7 +3,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class PickUpDoll {
-    public  int solution(int[][] board, int[] moves) {
+    public int solution(int[][] board, int[] moves) {
         int answer = 0;
         Map<Integer, Deque<Integer>> map = new HashMap<>();
 
@@ -35,7 +35,7 @@ public class PickUpDoll {
         }
 
         int idx = 1;
-        if(reslt.size()<=2){ //결과(바스켓)이 2개면 다른게 두개인거니까 두개가 터질게 없으니까 0
+        if (reslt.size() <= 2) { //결과(바스켓)이 2개면 다른게 두개인거니까 두개가 터질게 없으니까 0
             return 0;
         }
 
@@ -51,7 +51,7 @@ public class PickUpDoll {
             idx++;
         }
 
-        if(reslt.size()<=2){ // 와일 빠져나고 2개거나 이하면 리턴 증가시켰던 엔서 리턴
+        if (reslt.size() <= 2) { // 와일 빠져나고 2개거나 이하면 리턴 증가시켰던 엔서 리턴
             return answer;
         }
 

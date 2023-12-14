@@ -9,7 +9,7 @@ class ResultOfDeclaration {
         List<String> list = new ArrayList<>();
         Set<String> set = new HashSet<>();
 
-        for(int i=0; i<report.length; i++){
+        for (int i = 0; i < report.length; i++) {
             set.add(report[i]); // 동일 신고 건 하나로 만들고
         }
 
@@ -39,7 +39,7 @@ class ResultOfDeclaration {
         list.clear(); // 리스트 클리어
 
 
-        map.entrySet().stream().forEach(entry-> {
+        map.entrySet().stream().forEach(entry -> {
             Integer val = entry.getValue();
 
             if (val >= k) {
@@ -49,15 +49,14 @@ class ResultOfDeclaration {
         });
 
 
-
-        List<String > listMap = new ArrayList<>();
+        List<String> listMap = new ArrayList<>();
 
         for (int i = 0; i < set.size(); i++) {
             String er = setList.get(i).split(" ")[0];
             String ee = setList.get(i).split(" ")[1];
 
             for (int j = 0; j < list.size(); j++) {
-                if(ee.equals(list.get(j))){
+                if (ee.equals(list.get(j))) {
                     listMap.add(er); // 다시 신고한 사람 만드려 새로운 리스트 맵 만들고
                 }
             }
@@ -71,15 +70,15 @@ class ResultOfDeclaration {
                 });
 
 
-        for(int i=0; i< id_list.length; i++){
-            if(!map.containsKey(id_list[i])){
-                map.put(id_list[i],0 );
+        for (int i = 0; i < id_list.length; i++) {
+            if (!map.containsKey(id_list[i])) {
+                map.put(id_list[i], 0);
             }
         } // 만약 id_list 배열에 map이 없을 수 있으니 없으면 회수 0으로 만들고
 
         List<Integer> returnList = new ArrayList<>();
 
-        for(int i=0; i< id_list.length; i++){
+        for (int i = 0; i < id_list.length; i++) {
             returnList.add(map.get(id_list[i])); //id_list대로 결과 만들고(정렬)
         }
 

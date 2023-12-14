@@ -3,37 +3,37 @@ import java.util.*;
 public class ValidParentheses {
 
     public boolean isValid(String s) {
-        if(s.length()%2==1){
+        if (s.length() % 2 == 1) {
             return false;
         }
 
         Deque<String> deque = new LinkedList<>();
-        for(int i=0; i<s.length(); i++){
+        for (int i = 0; i < s.length(); i++) {
             String pushStr = String.valueOf(s.charAt(i));
-            if(pushStr.equals("(")  || pushStr.equals("[") || pushStr.equals("{")){
+            if (pushStr.equals("(") || pushStr.equals("[") || pushStr.equals("{")) {
                 deque.push(pushStr);
             } else {
-                if(deque.size()==0){
+                if (deque.size() == 0) {
                     return false;
-                }else{
-                    String str =deque.getFirst();
+                } else {
+                    String str = deque.getFirst();
 
-                    if(str.equals("(") && pushStr.equals(")")){
+                    if (str.equals("(") && pushStr.equals(")")) {
                         deque.pop();
-                    }else if(str.equals("[") && pushStr.equals("]")){
+                    } else if (str.equals("[") && pushStr.equals("]")) {
                         deque.pop();
-                    }else if( str.equals("{") && pushStr.equals("}")){
+                    } else if (str.equals("{") && pushStr.equals("}")) {
                         deque.pop();
-                    }else{
+                    } else {
                         break;
                     }
                 }
             }
         }
 
-        if(deque.size()==0){
+        if (deque.size() == 0) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }

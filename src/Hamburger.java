@@ -37,7 +37,7 @@ public class Hamburger {
 
             stack.add(ingredient[i]);
 
-            if(stack.size()<4) {
+            if (stack.size() < 4) {
                 continue;
             }
 
