@@ -6,7 +6,6 @@ public class TowSum {
         for (int i = 0, j = 1, k = nums.length - 1; j < nums.length; i++, j++, k--) {
 
             if ((nums[i] + nums[j]) == target) {
-
                 answer = new int[]{i, j};
                 break;
             } else if ((nums[i] + nums[k]) == target) {
