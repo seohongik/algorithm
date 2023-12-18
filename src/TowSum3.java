@@ -23,27 +23,27 @@ public class TowSum3 {
             answer[1] = nums.length - 2;
             return answer;
         }
-        int end = 0;
+        int each = 0;
         int start = 0;
         for (int i = 0; i < nums.length; i++) {
 
-            end = makeRealEnd(end);
+            each = makeRealEnd(each);
 
-            if (nums[end] + nums[start] == target && start != end) {
+            if (nums[each] + nums[start] == target && start != each) {
 
                 answer[0] = start;
-                answer[1] = end;
+                answer[1] = each;
 
                 if (answer[0] == answer[1]) {
-                    answer[1] = end + 1;
+                    answer[1] = each + 1;
                 }
 
                 return answer;
             }
 
-            if (end >= nums.length - 1) {
+            if (each >= nums.length - 1) {
                 start++;
-                end = 0;
+                each = 0;
                 i = 0;
             }
 
@@ -51,8 +51,8 @@ public class TowSum3 {
         return answer;
     }
 
-    private int makeRealEnd(int end) {
-        return ++end;
+    private int makeRealEnd(int each) {
+        return ++each;
     }
 
 }
