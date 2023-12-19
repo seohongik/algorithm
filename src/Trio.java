@@ -2,6 +2,7 @@
 import java.util.*;
 public class Trio {
 
+
     public int solution(int[] number) {
         int first = 0;
         int second = 0;
