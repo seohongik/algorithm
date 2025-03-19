@@ -1,25 +1,43 @@
 package star;
 
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.Random;
 
-class Solution{
+interface Process {
+    public void run();
+}
 
-    public int solution(int n) {
+class Solution  {
 
-        return 0;
+    public void Hello(Process process) {
+        System.out.println("Hello");
+        process.run();
+        System.out.println("World");
     }
+}
 
+class Dice implements Process {
+
+    @Override
+    public void run() {
+        System.out.println(new Random().nextInt(6)+1);
+    }
+}
+
+class Sum implements Process {
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 10; i++) {
+            System.out.println(i+1);
+        }
+    }
 }
 
 public class Main {
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        System.out.print(solution.solution(n));
 
+        Solution solution = new Solution() ;
+        solution.Hello(new Dice());
+        solution.Hello(new Sum());
     }
 }
-
