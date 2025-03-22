@@ -39,5 +39,7 @@ public class Main {
         Solution solution = new Solution() ;
         solution.Hello(new Dice());
         solution.Hello(new Sum());
+
     }
 }
+
