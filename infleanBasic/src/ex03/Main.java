@@ -1,4 +1,4 @@
-package ex3;
+package ex03;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Scanner;

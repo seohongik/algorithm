@@ -1,4 +1,4 @@
-package ex6;
+package ex06;
 
 import java.util.*;
 import java.util.stream.Collectors;

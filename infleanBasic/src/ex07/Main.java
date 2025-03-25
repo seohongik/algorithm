@@ -1,4 +1,4 @@
-package ex7;
+package ex07;
 
 import java.util.*;
 

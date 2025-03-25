@@ -1,7 +1,5 @@
-package ex5;
+package ex05;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Scanner;
 
 class Solution{
