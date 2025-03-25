@@ -2,8 +2,36 @@ package ex26;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
+
+
+class Solution2{
+
+    public ArrayList<Integer> solution(int n, int m, int[] a, int[] b){
+        ArrayList<Integer> list = new ArrayList<>();
+
+        Arrays.sort(a);
+        Arrays.sort(b);
+        int p1 = 0;
+        int p2 = 0;
+
+        while (p1 < a.length && p2 < b.length){
+
+            if(a[p1] < b[p2]){
+                p1++;
+            }else if(a[p1] == b[p2]){
+                list.add(a[p1]);
+                p2++;
+                p1++;
+            }else if(a[p1] > b[p2]){
+                p2++;
+            }
+        }
+
+        return list;
+    }
+
+}
 
 class Solution{
 
