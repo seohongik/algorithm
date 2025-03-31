@@ -1,25 +1,27 @@
 package ex36;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
+//정답 예전에 삼총사 푼거랑 비슷함
 class Solution {
-
     public int solution(int[] arr, int n, int k) {
-
-
-        Integer[] a = new Integer[n];
+        int answer = -1;
+        TreeSet<Integer> Tset = new TreeSet<>(Collections.reverseOrder());
         for (int i = 0; i < n; i++) {
-            a[i] = arr[i];
-        }
-        Arrays.sort(a, new Comparator<Integer>() {
-            public int compare(Integer o1, Integer o2) {
-                return o2 - o1;
+            for (int j = i + 1; j < n; j++) {
+                for (int l = j + 1; l < n; l++) {
+                    Tset.add(arr[i] + arr[j] + arr[l]);
+                }
             }
-        });
+        }
+        int cnt = 0;
 
-
-        return 0;
+        for (int x : Tset) {
+            //System.out.println(x);
+            cnt++;
+            if (cnt == k) return x;
+        }
+        return answer;
     }
 }
 
