@@ -10,7 +10,7 @@ class Solution {
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
                 for (int l = j + 1; l < n; l++) {
-                    Tset.add(arr[i] + arr[j] + arr[l]);
+                    Tset.add(Integer.valueOf(arr[i] + arr[j] + arr[l]));
                 }
             }
         }
