@@ -10,7 +10,6 @@ class Solution {
         Queue<Character> queue = new LinkedList<>();
         int cnt=0;
         for (int i = 0; i < braces.length(); i++) {
-
             if(braces.charAt(i) == '('){
                 stack.add(braces.charAt(i));
             }else {
@@ -23,7 +22,6 @@ class Solution {
         if(stack.isEmpty()&& cnt==queue.size()){
             return "YES";
         }
-
         return "NO";
     }
 }
@@ -42,7 +40,6 @@ class Solution2 {
                 }
                 stack.pop();
             }
-
         }
         if(stack.isEmpty()){
             return "YES";
