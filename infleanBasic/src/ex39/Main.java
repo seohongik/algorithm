@@ -7,11 +7,11 @@ class Solution {
 
         List<Queue<Integer>> queues = new ArrayList<>();
         Stack<Integer> stack = new Stack<>();
-        for (int j = 0; j < board.length; j++) {
+        for (int i = 0; i< board.length; i++) {
             Queue<Integer> list = new LinkedList<>();
-            for (int k = 0; k < board[j].length; k++) {
-                if(board[k][j]!=0){
-                    list.add(board[k][j]);
+            for (int j = 0; j < board[i].length; j++) {
+                if(board[j][i]!=0){
+                    list.add(board[j][i]);
                 }
             }
             queues.add(list);
@@ -25,7 +25,6 @@ class Solution {
             if(stack.size()<2){
                 continue;
             }
-
             if(stack.get(stack.size()-2)==stack.peek().intValue()){
                 stack.pop();
                 stack.pop();
