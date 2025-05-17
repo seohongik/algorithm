@@ -2,6 +2,8 @@ package inflearnBaisc.ex43;
 
 import java.util.*;
 
+
+
 class Solution {
 
     public String solution(String required, String n ){
@@ -13,7 +15,9 @@ class Solution {
             if(!deque.isEmpty()) {
                 if (deque.peekFirst() == c) {
                     deque.removeFirst();
-                }
+                }/*else {
+                    return "NO";
+                }*/
             }
         }
         if(deque.isEmpty()){
@@ -26,12 +30,21 @@ class Solution {
 // 이게 답
 class Solution2 {
 
-    public String solution(String required, String n ){
-
-
-
-        return "NO";
-
+    public String solution2(String need, String plan){
+        String answer="YES";
+        Queue<Character> Q=new LinkedList<>();
+        for(char x : need.toCharArray()) {
+            Q.offer(x);
+        }
+        for(char x : plan.toCharArray()){
+            if(Q.contains(x)){
+                if(x!=Q.poll()) {
+                    return "NO";
+                }
+            }
+        }
+        if(!Q.isEmpty()) return "NO";
+        return answer;
     }
 }
 
