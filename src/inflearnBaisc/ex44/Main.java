@@ -43,7 +43,7 @@ class Solution {
     }
 }
 
-
+// 이게 답
 class Person{
     int id;
     int priority;
@@ -52,7 +52,7 @@ class Person{
         this.priority=priority;
     }
 }
-
+// 이게 답
 class Solution2{
     public int solution(int n, int m, int[] arr){
         int answer=0;
