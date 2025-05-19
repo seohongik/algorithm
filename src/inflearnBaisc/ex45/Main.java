@@ -73,7 +73,7 @@ class Solution4 {
         for (int i=0; i<array.length; i++){
             int target = array[i];
             for (int j=array.length-1; j>=0; j--){
-                if(i>=1 &&array[i - 1] > target){
+                if(i>=1 && array[i - 1] > target){
                     array[i] = array[i - 1];
                     array[i - 1] = target;
                     i--;
