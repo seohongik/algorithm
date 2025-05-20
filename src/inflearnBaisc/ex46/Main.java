@@ -12,14 +12,30 @@ import java.util.Scanner;
 -> 7 5 3 2 6
  */
 
-
 //정렬로 풀기
 class Solution2 {
-    public int[]  solution(int s, int n , int[] inputs){
-        int[] memory = new int[s];
-
-
-        return null;
+    public int[]  solution(int size, int n , int[] inputs){
+        int[] cache=new int[size];
+        for(int x : inputs){
+            int hit=-1;
+            for(int i=0; i<size; i++){
+                if(x==cache[i]) {
+                    hit=i;
+                }
+            }
+            if(hit==-1){
+                for(int i=size-1; i>=1; i--){
+                    cache[i]=cache[i-1];
+                }
+            }
+            else{
+                for(int i=hit; i>=1; i--){
+                    cache[i]=cache[i-1];
+                }
+            }
+            cache[0]=x;
+        }
+        return cache;
     }
 }
 
@@ -59,7 +75,7 @@ class Solution {
 public class Main {
 
     public static void main(String[] args){
-        Solution solution1 = new Solution();
+        Solution2 solution1 = new Solution2();
         Scanner kb = new Scanner(System.in);
         int s=kb.nextInt();
         int n=kb.nextInt();
