@@ -19,7 +19,6 @@ class Solution {
         for (int i = 0; i < peerIdx; i++){
             if(student[i] >= pear){
                 cholIdx = i;
-
                 if(student[i]==pear){
                     cholIdx++;
                 }
