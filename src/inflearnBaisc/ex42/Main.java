@@ -1,12 +1,13 @@
 package inflearnBaisc.ex42;
 
+import java.lang.reflect.Method;
 import java.util.*;
 
 
 //2시간 걸림 continue 때문 해맴
 class Solution {
 
-    public int solution(int n, int k ){
+    public int solution(int n, int k ) {
         Deque<Integer> around = new ArrayDeque<>();
         Deque<Integer> defeatList = new ArrayDeque<>();
         int counter = 1;
@@ -27,6 +28,7 @@ class Solution {
             }
         }
         return defeatList.getLast();
+
     }
 }
 
@@ -55,11 +57,18 @@ class Solution2 {
 
 public class  Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws NoSuchMethodException {
+
+
         Solution2 T = new Solution2();
         Scanner kb = new Scanner(System.in);
         int n=kb.nextInt();
         int k=kb.nextInt();
         System.out.println(T.solution(n,k));
+
+
+
+
+
     }
 }

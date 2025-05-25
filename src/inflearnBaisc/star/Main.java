@@ -15,7 +15,7 @@ class Solution  {
     }
 }
 
-class Dice implements Process {
+class  Dice implements Process {
 
     @Override
     public void run() {
