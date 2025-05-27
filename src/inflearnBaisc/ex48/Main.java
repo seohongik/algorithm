@@ -28,7 +28,22 @@ class Solution {
         answer[0]=cholIdx+1;
 
         return answer;
+    }
+}
 
+class Solution2 {
+    public int[] solution(int n, int[] student){
+        List<Integer> answer = new ArrayList<>();
+        int[] temp = new int[student.length];
+        System.arraycopy(student, 0, temp, 0, student.length);
+        Arrays.sort(temp);
+        for (int i = 0; i < student.length; i++){
+
+            if(student[i]!=temp[i]){
+                answer.add(i+1);
+            }
+        }
+        return answer.stream().mapToInt(i->i).toArray();
     }
 
 }

@@ -44,10 +44,42 @@ class Solution2 {
 
 }
 
+
+// binarySearch 사용해서 풀기
+class Solution3 {
+    public int  solution(int n,int m, int[] array){
+        Arrays.sort(array);
+        return Arrays.binarySearch(array,m)+1;
+    }
+
+}
+
+// 이게 답
+class Solution4 {
+    public int  solution(int n,int m, int[] array){
+        Arrays.sort(array);
+
+        int lt = 0;
+        int rt = array.length-1;
+        while (lt<=rt) {
+            int mid = (lt + rt) / 2;
+            if (array[mid] < m) {
+                lt = mid + 1;
+            } else {
+                rt = mid - 1;
+            }
+        }
+        return lt+1;
+    }
+
+}
+
+
+
 public class Main {
 
     public static void main(String[] args){
-        Solution solution = new Solution();
+        Solution4 solution = new Solution4();
         Scanner kb = new Scanner(System.in);
         int n=kb.nextInt();
         int m=kb.nextInt();
