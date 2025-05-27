@@ -74,6 +74,26 @@ class Solution4 {
 
 }
 
+//이게 좀더 확실한  답 break 걸었기때문에 좀 더 빠름
+class Solution5 {
+    public int  solution(int n,int m, int[] array){
+        int answer=0;
+        Arrays.sort(array);
+        int lt=0, rt=n-1;
+        while(lt<=rt){
+            int mid=(lt+rt)/2;
+            if(array[mid]==m){
+                answer=mid+1;
+                break;
+            }
+            if(array[mid]>m) rt=mid-1;
+            else lt=mid+1;
+        }
+        return answer;
+    }
+
+}
+
 
 
 public class Main {
