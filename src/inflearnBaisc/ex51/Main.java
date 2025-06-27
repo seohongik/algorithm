@@ -1,7 +1,6 @@
 package inflearnBaisc.ex51;
-import javax.swing.plaf.metal.MetalTheme;
 import java.util.*;
-import java.util.stream.Collectors;
+
 
 /*
  9 3
@@ -32,7 +31,7 @@ class Solution {
                 lt = mid+1;
             }
         }
-        return ans;
+        return ans-1;
     }
 
     int isPuttable(int[] songTime, int capacity){
@@ -47,7 +46,7 @@ class Solution {
                 sum = x;
             }
         }
-        System.out.println("sum = " + sum);
+
         return count;
     }
 
