@@ -17,8 +17,6 @@ import java.util.stream.Collectors;
 
 * */
 
-
-
 class Solution {
     public int  solution(int n,int m, int[] array){
         Arrays.sort(array);
@@ -55,7 +53,7 @@ class Solution3 {
 }
 
 // 이게 답
-class Solution4 {
+class  Solution4 {
     public int  solution(int n,int m, int[] array){
         Arrays.sort(array);
 
@@ -93,9 +91,6 @@ class Solution5 {
     }
 
 }
-
-
-
 public class Main {
 
     public static void main(String[] args){
