@@ -122,7 +122,6 @@ class Main{
         sol.root.right.left = new Node(6);
         sol.root.right.right = new Node(7);
 
-
         System.out.println();
         sol.preorder(); // 전위 순회 // 부모 -> 왼쪽 자식 -> 오른쪽 자식
         System.out.println();
