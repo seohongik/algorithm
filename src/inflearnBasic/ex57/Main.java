@@ -111,8 +111,6 @@ class Solution {
 class Main{
 
     public static void main(String[] args){
-        Scanner kb = new Scanner(System.in);
-        int n = kb.nextInt();
         Solution sol = new Solution();
         sol.root = new Node(1);
         sol.root.left = new Node(2);
