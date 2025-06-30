@@ -63,7 +63,25 @@ class Solution {
 
         while (!queue.isEmpty()) {
             Node current = queue.poll();
-            System.out.println(current);
+
+            /*
+            Node {
+                data = 1, left = Node {
+                    data = 2, left = Node {
+                        data = 4, left = null, right = null
+                    }, right = Node {
+                        data = 5, left = null, right = null
+                    }
+                }, right = Node {
+                    data = 3, left = Node {
+                        data = 6, left = null, right = null
+                    }, right = Node {
+                        data = 7, left = null, right = null
+                    }
+                }
+            }
+            * */
+
             System.out.print(current.data + " "); // 노드 방문 처리
 
             if (current.left != null) {
