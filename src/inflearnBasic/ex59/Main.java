@@ -82,7 +82,7 @@ class Solution {
             }
             * */
 
-            System.out.print(current.data + " "); // 노드 방문 처리
+            System.out.print(current.data + "\n"); // 노드 방문 처리
 
             if (current.left != null) {
                 queue.offer(current.left);
@@ -90,6 +90,54 @@ class Solution {
             if (current.right != null) {
                 queue.offer(current.right);
             }
+        }
+    }
+
+    // 요게 좀더 직관적
+    public void bfs2(Node root) {
+        if (root == null) {
+            return;
+        }
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+
+        int level = 0;
+        while (!queue.isEmpty()) {
+            int len = queue.size();
+            /*
+            Node {
+                data = 1, left = Node {
+                    data = 2, left = Node {
+                        data = 4, left = null, right = null
+                    }, right = Node {
+                        data = 5, left = null, right = null
+                    }
+                }, right = Node {
+                    data = 3, left = Node {
+                        data = 6, left = null, right = null
+                    }, right = Node {
+                        data = 7, left = null, right = null
+                    }
+                }
+            }
+            * */
+
+            System.out.print("level " + level+" : ");
+            for (int i=0; i<len; i++) {
+                Node current = queue.poll();
+                if(current != null) {
+                    System.out.print(current.data+" ");
+                    if (current.left != null) {
+                        queue.offer(current.left);
+                    }
+                    if (current.right != null) {
+                        queue.offer(current.right);
+                    }
+                }
+            }
+            level++;
+            System.out.println();
         }
     }
 
@@ -124,7 +172,7 @@ class Main{
         sol.root.right.right = new Node(7);
 
         System.out.println();
-        sol.bfs(sol.root);
+        sol.bfs2(sol.root);
 
     }
 }
