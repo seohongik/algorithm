@@ -63,6 +63,7 @@ class Solution {
 
         while (!queue.isEmpty()) {
             Node current = queue.poll();
+            System.out.println(current);
             System.out.print(current.data + " "); // 노드 방문 처리
 
             if (current.left != null) {
