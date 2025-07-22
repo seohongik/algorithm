@@ -68,7 +68,6 @@ public class Main {
             }else {
                 System.out.println("element : "+o);
             }
-
         }
     }
 

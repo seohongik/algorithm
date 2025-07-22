@@ -1,5 +1,6 @@
 package inflearnBasic.ex59;
 
+import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -173,6 +174,5 @@ class Main{
 
         System.out.println();
         sol.bfs2(sol.root);
-
     }
 }
