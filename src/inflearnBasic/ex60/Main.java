@@ -8,7 +8,7 @@ import java.util.Scanner;
 // BFS 전 통과는 했으나 불완전한 정답
 class Solution {
 
-    int[] jumpable = {1, -1, 4}; // 가능한 점프
+    int[] jumpable = {1, -1, 5}; // 가능한 점프
     public int solution(int my , int sheep) {
 
         int count = 0;
@@ -52,7 +52,7 @@ class Solution {
 class Solution1 {
 
     public int solution(int my, int sheep) {
-        int[] moves = {1, -1, 4};
+        int[] moves = {1, -1, 5};
         boolean[] visited = new boolean[10001]; // 문제 조건 상 최대 범위 충분히 커버
         Queue<Integer> queue = new LinkedList<>();
 
@@ -94,7 +94,7 @@ class Solution1 {
 // BFS 해답지
 class Solution2 {
     int answer = 0;
-    int[] dis = {1, -1, 4};
+    int[] dis = {1, -1, 5};
     int[] ch;
     Queue<Integer> Q = new LinkedList<>();
     public int solution(int s, int e) {
@@ -123,9 +123,29 @@ class Solution2 {
     }
 }
 
-//BFS 안썼지만 이게 더 직관적 하지만 점프어블에 종속적 (
+//BFS 안썼지만 이게 더 직관적 하지만 점프어블에 종속적
+
+/*
+1. 최소 점프 횟수를 보장하지 않음
+예: my = 5, sheep = 14
+
+가능한 경로: 5 -> 10 -> 11 -> 12 -> 13 -> 14 (5 + 1 + 1 + 1 + 1 = 5점프)
+
+더 좋은 경로: 5 -> 6 -> 11 -> 12 -> 13 -> 14 or 5 -> 10 -> 15 -> 14 등
+
+즉, 단순히 5씩 점프하는 방식은 최적 경로를 보장하지 않음.
+
+2. (sheep - my) % jumpable[2] - 1 이 위험함
+이 계산이 음수가 될 수 있음.
+
+예: my = 1, sheep = 6 → (6 - 1) % 5 - 1 = 0 - 1 = -1
+
+결국 count + -1이 되어 정답보다 작을 수 있음.
+* */
+
+
 class Solution3{
-    int[] jumpable = {1,-1,4}; // 가능한 점프
+    int[] jumpable = {1,-1,5}; // 가능한 점프
 
     public int solution(int my, int sheep) {
 
@@ -149,16 +169,6 @@ class Main{
         Scanner sc = new Scanner(System.in);
         int my = sc.nextInt();
         int sheep = sc.nextInt();
-        Solution sol = new Solution();
-        result = sol.solution(my,sheep);
-        System.out.println("result = " + result);
-
-        System.out.println(" =============== END SOL");
-        Solution sol1 = new Solution();
-        result = sol1.solution(my,sheep);
-        System.out.println("result = " + result);
-
-        System.out.println(" =============== END SOL1");
         Solution3 sol3 = new Solution3();
         result = sol3.solution(my,sheep);
         System.out.println("result = " + result);
