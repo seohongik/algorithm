@@ -8,9 +8,9 @@ import java.util.Scanner;
 // BFS 전 통과는 했으나 불완전한 정답
 class Solution {
 
+    int[] jumpable = {1, -1, 4}; // 가능한 점프
     public int solution(int my , int sheep) {
 
-        int[] jumpable = {1,-1,5}; // 가능한 점프
         int count = 0;
         int lt = Math.min(my, sheep);
         int rt1= sheep;
@@ -32,7 +32,7 @@ class Solution {
 
         int rt = dist1>=dist2?rt2:rt1 ; // 5씩 계산할거니까 가장 양과의 거리에서 가까운쪽 택
 
-        while (lt<=rt) {
+        while (lt<rt) {
             if(my<sheep) {
                 rt -= jumpable[2];
             }
@@ -44,19 +44,15 @@ class Solution {
         for (int i=dif; i<dis; i++){ //남은 거리 계산
             count++;
         }
-
-
         return count;
     }
 }
 
-
-
-// BFS
-class Solution2 {
+//BFS 인공지는 결과
+class Solution1 {
 
     public int solution(int my, int sheep) {
-        int[] moves = {1, -1, 5};
+        int[] moves = {1, -1, 4};
         boolean[] visited = new boolean[10001]; // 문제 조건 상 최대 범위 충분히 커버
         Queue<Integer> queue = new LinkedList<>();
 
@@ -93,12 +89,79 @@ class Solution2 {
 }
 
 
+
+
+// BFS 해답지
+class Solution2 {
+    int answer = 0;
+    int[] dis = {1, -1, 4};
+    int[] ch;
+    Queue<Integer> Q = new LinkedList<>();
+    public int solution(int s, int e) {
+        ch = new int[10001];
+        ch[s] = 1;
+        Q.offer(s);
+        int L = 0;
+        while (!Q.isEmpty()) {
+            int len = Q.size();
+            for (int i = 0; i < len; i++) {
+                int x = Q.poll();
+                for (int j = 0; j < 3; j++) {
+                    int nx = x + dis[j];
+                    if (nx == e) {
+                        return L + 1;
+                    }
+                    if (nx >= 1 && nx <= 10000 && ch[nx] == 0) {
+                        ch[nx] = 1;
+                        Q.offer(nx);
+                    }
+                }
+            }
+            L++;
+        }
+        return 0;
+    }
+}
+
+//BFS 안썼지만 이게 더 직관적 하지만 점프어블에 종속적 (
+class Solution3{
+    int[] jumpable = {1,-1,4}; // 가능한 점프
+
+    public int solution(int my, int sheep) {
+
+        if(my>sheep){
+            return Math.abs(sheep - my); // 만약 양이 뒤에 있다면 -1 점프 밖에 안되니까 두사이의 거리의 절대값
+        }
+        int count = 0;
+        for (int i =my; i<=sheep; i+=jumpable[2]){ // 5씩 점프
+            count++;
+        }
+        return count+((sheep-my)%jumpable[2])-1;
+    }
+
+}
+
+
 class Main{
 
     public static void main(String[] args){
-        Solution sol = new Solution();
+        int result = 0;
         Scanner sc = new Scanner(System.in);
-        int result =  sol.solution(sc.nextInt(), sc.nextInt());
-        System.out.println(result);
+        int my = sc.nextInt();
+        int sheep = sc.nextInt();
+        Solution sol = new Solution();
+        result = sol.solution(my,sheep);
+        System.out.println("result = " + result);
+
+        System.out.println(" =============== END SOL");
+        Solution sol1 = new Solution();
+        result = sol1.solution(my,sheep);
+        System.out.println("result = " + result);
+
+        System.out.println(" =============== END SOL1");
+        Solution3 sol3 = new Solution3();
+        result = sol3.solution(my,sheep);
+        System.out.println("result = " + result);
+        System.out.println(" =============== END SOL3");
     }
 }
