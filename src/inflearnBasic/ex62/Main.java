@@ -13,7 +13,6 @@ class Solution {
         int level = 0;
         while(!q.isEmpty()) {
             Node cur = q.poll();
-
             int size = q.size();
             for (int i=0; i<size; i++){
 
