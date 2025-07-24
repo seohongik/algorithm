@@ -8,17 +8,11 @@ class Solution {
     public int solution(int start , Node root) {
 
         if (root == null) return Integer.MAX_VALUE;
-        //if(root.left != null) { // left자체가 null일수 있음 널포인트 익셉
-           // solution(start + 1, root.left);
-        //}
 
         // 말단 노드이면 현재 depth 반환
         if (root.left == null && root.right == null) {
             return start;
         }
-        //if(root.right != null) { // right 자체가 null일수 있음 널포인트 익셉
-           // solution(start + 1, root.right);
-        //}
         int left = solution(start+ 1, root.left);
         int right = solution(start + 1, root.right);
         return Math.min(left, right);
