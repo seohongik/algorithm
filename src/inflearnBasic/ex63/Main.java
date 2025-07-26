@@ -21,7 +21,7 @@ import java.util.*;
 //GRAPH
 class Solution {
 
-    int n=0;
+    int end=0;
     int m=0;
     int answer = 0;
     boolean[] visited;
@@ -48,9 +48,9 @@ class Solution {
         1 -> 4 -> 5
         */
 
-        if(start==n) answer++;
+        if(start==end) answer++;
         else{
-            for(int i=1; i<=n; i++){
+            for(int i=1; i<=end; i++){
                 if(graph[start][i]==1 && !visited[i]){
                     visited[i]=true;
                     solution(i);
@@ -74,10 +74,10 @@ class Main{
 
         Solution sol = new Solution();
         Scanner kb = new Scanner(System.in);
-        sol.n=kb.nextInt();
+        sol.end=kb.nextInt();
         sol.m=kb.nextInt();
-        sol.graph=new int[sol.n+1][sol.n+1];
-        sol.visited=new boolean[sol.n+1];
+        sol.graph=new int[sol.end+1][sol.end+1];
+        sol.visited=new boolean[sol.end+1];
         for(int i=0; i<sol.m; i++){
             int a=kb.nextInt();
             int b=kb.nextInt();
