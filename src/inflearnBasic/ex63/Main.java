@@ -21,9 +21,9 @@ import java.util.*;
 //GRAPH
 class Solution {
 
-    int end=0;
-    int m=0;
-    int answer = 0;
+    int end;
+    int m;
+    int answer;
     boolean[] visited;
     int[][] graph;
 
@@ -65,8 +65,6 @@ class Solution {
 
 
 class Main{
-
-
 
     public static void main(String[] args){ // 예상결과 2
 
