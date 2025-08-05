@@ -138,27 +138,32 @@ class Solution{
 
 
 class Solution2 {
-    public int solution(int[][] info, int n, int m) {// 결정 알고리즘 적용 + DP
+    public int solution(int[][] info, int n, int m) {
+        // 전체 A 흔적 총합 계산
         int totalA = 0;
         for (int[] item : info) {
             totalA += item[0];
         }
 
+        // 이분 탐색으로 A가 최소 남길 수 있는 흔적값을 탐색
         int lo = 0;
         int hi = totalA;
-        int answer = totalA;
+        int answer = totalA; // 최대 흔적에서 시작
 
         while (lo <= hi) {
             int mid = (lo + hi) / 2;
 
             if (canReduceTo(info, m, mid)) {
+                // A의 흔적을 mid 이하로 줄일 수 있다면, 더 줄여본다
                 answer = mid;
                 hi = mid - 1;
             } else {
+                // 못 줄이면, 흔적을 늘린다
                 lo = mid + 1;
             }
         }
 
+        // n보다 크거나 같으면 실패
         return answer >= n ? -1 : answer;
     }
 
@@ -166,22 +171,29 @@ class Solution2 {
         int totalA = 0;
         for (int[] item : info) totalA += item[0];
 
-        int[] dp = new int[m + 1];  // dp[j]: 흔적 j 이하로 B가 훔칠 때 절약 가능한 최대 A 흔적
+        // dp[j] = 흔적 j 이하로 B가 훔칠 수 있는 최대 A 절약값
+        int[] dp = new int[m + 1];
 
+        // 0-1 Knapsack 알고리즘
         for (int[] item : info) {
-            int a = item[0], b = item[1];
-            for (int j = m; j > b; j--) { // j>=b 에서 j>b 로 하니까 통과
+            int a = item[0]; // A가 남긴 흔적
+            int b = item[1]; // B가 남길 흔적
+
+            // 뒤에서부터 순회해야 같은 물건을 여러 번 선택하지 않음
+            for (int j = m; j > b; j--) {
+                // 현재 흔적 j에서 이 물건을 선택했을 때 최대 A 절약값을 저장
                 dp[j] = Math.max(dp[j], dp[j - b] + a);
             }
         }
 
-        // 모든 가능한 흔적 합 j에 대해 검사
+        // 가능한 흔적 j에 대해, A의 남은 흔적이 limit 이하인지 확인
         for (int j = 0; j <= m; j++) {
-            int remain = totalA - dp[j];
+            int remain = totalA - dp[j]; // 절약된 만큼 빼기
             if (remain <= limit) return true;
         }
 
         return false;
     }
+
 }
 
