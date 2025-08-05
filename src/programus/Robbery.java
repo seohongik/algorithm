@@ -136,3 +136,52 @@ class Solution{
     }
 }
 
+
+class Solution2 {
+    public int solution(int[][] info, int n, int m) {// 결정 알고리즘 적용 + DP
+        int totalA = 0;
+        for (int[] item : info) {
+            totalA += item[0];
+        }
+
+        int lo = 0;
+        int hi = totalA;
+        int answer = totalA;
+
+        while (lo <= hi) {
+            int mid = (lo + hi) / 2;
+
+            if (canReduceTo(info, m, mid)) {
+                answer = mid;
+                hi = mid - 1;
+            } else {
+                lo = mid + 1;
+            }
+        }
+
+        return answer >= n ? -1 : answer;
+    }
+
+    private boolean canReduceTo(int[][] info, int m, int limit) {
+        int totalA = 0;
+        for (int[] item : info) totalA += item[0];
+
+        int[] dp = new int[m + 1];  // dp[j]: 흔적 j 이하로 B가 훔칠 때 절약 가능한 최대 A 흔적
+
+        for (int[] item : info) {
+            int a = item[0], b = item[1];
+            for (int j = m; j > b; j--) { // j>=b 에서 j>b 로 하니까 통과
+                dp[j] = Math.max(dp[j], dp[j - b] + a);
+            }
+        }
+
+        // 모든 가능한 흔적 합 j에 대해 검사
+        for (int j = 0; j <= m; j++) {
+            int remain = totalA - dp[j];
+            if (remain <= limit) return true;
+        }
+
+        return false;
+    }
+}
+
