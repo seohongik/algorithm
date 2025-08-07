@@ -3,7 +3,7 @@ package programus;
 public class MonsterAttackBandageHeal {
     public int solution(int[] bandage, int health, int[][] attacks) {
         int lastAttackTime  = attacks[attacks.length-1][0];
-        User user = new User(health,bandage[0], bandage[1] , bandage[2]);
+        User user = new User(health, bandage[0], bandage[1] , bandage[2]);
         int[][] allAttacks = new int[lastAttackTime+1][2];
         for (int i=0; i<allAttacks.length; i++) {
             for (int[] attack : attacks) {
