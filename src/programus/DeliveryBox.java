@@ -15,6 +15,7 @@ public class DeliveryBox {
             list.add(i);
         }
 
+
         Stack<List<Integer>> stacks = new Stack<>();
         for (int i = 0; i <list.size(); i+=w) {
             if(w+i>list.size()){
