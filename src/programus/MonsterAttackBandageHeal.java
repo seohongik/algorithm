@@ -6,9 +6,9 @@ public class MonsterAttackBandageHeal {
         User user = new User(health,bandage[0], bandage[1] , bandage[2]);
         int[][] allAttacks = new int[lastAttackTime+1][2];
         for (int i=0; i<allAttacks.length; i++) {
-            for (int j=0; j< attacks.length; j++) {
-                if(i==attacks[j][0]){
-                    allAttacks[i] = attacks[j];
+            for (int[] attack : attacks) {
+                if (i == attack[0]) {
+                    allAttacks[i] = attack;
                 }
             }
         }
