@@ -26,7 +26,7 @@ public class MonsterAttackBandageHeal {
         }
     }
 
-    public static class User {
+    private static class User {
 
         final int healAmount;
         final int maxHealth;
