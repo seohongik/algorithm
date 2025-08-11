@@ -25,6 +25,7 @@ class ServerManager {
     private final int k;
     private int totalExpansions = 0;
     private final List<Integer> firstInstallTimes = new ArrayList<>();
+
     public ServerManager(int m, int k) {
         this.m = m;
         this.k = k;
@@ -38,6 +39,7 @@ class ServerManager {
 
         // 2. 필요한 서버 수 계산
         int need = players / m;
+        System.out.println("need = " + need);
 
         // 3. 부족하면 증설
         while (pq.size() < need) {
@@ -73,7 +75,6 @@ public class ServerScaleUp {
         for (int i = 0; i < players.length; i++) {
             manager.process(i, players[i]);
         }
-        System.out.println( manager.getFirstInstallTimes());
         return manager.getTotalExpansions();
     }
 }
