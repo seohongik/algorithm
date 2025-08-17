@@ -39,15 +39,7 @@ public class ImprovementFunctionality {
 
         Map<Integer, Long> counter = proccessed.stream().collect(Collectors.groupingBy(i -> i, Collectors.counting()));
 
-        List<Map.Entry<Integer, Long>> list = new ArrayList<>(counter.entrySet());
-        list.sort(Map.Entry.comparingByKey());
-
-        List<Integer> result = new ArrayList<>();
-        for (Map.Entry<Integer, Long> entry : list){
-            result.add(Math.toIntExact(entry.getValue()));
-        }
-
-        return result.stream().mapToInt(i -> i).toArray();
+        return counter.values().stream().mapToInt(Long::intValue).toArray();
     }
 
     public static void main(String[] args) {
