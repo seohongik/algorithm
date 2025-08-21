@@ -14,7 +14,6 @@ public class ExpoNumber {
             stack.push(i);
             if(stack.stream().mapToInt(integer -> integer).sum()==n){
                 answer++;
-                continue;
             }
 
         }
