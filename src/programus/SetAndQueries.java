@@ -96,6 +96,7 @@ public class SetAndQueries {
     }
 
 
+
     // 인공지능 코드 // 일반 링크드해쉬맵으로 짜줬는데 -> 서브맵 사용을 위한 트리맵으로 변경 -> 그리고 다시 set이용 방식으로 그러나 시간초과
     public String[] solution2(int n, int[][] queries) {
         List<Set<Integer>> sets = new ArrayList<>();
