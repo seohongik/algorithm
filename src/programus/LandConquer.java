@@ -1,7 +1,4 @@
 package programus;
-import java.util.*;
-import java.util.stream.Collectors;
-
 public class LandConquer {
     int solution(int[][] land) {
 
