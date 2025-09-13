@@ -1,6 +1,5 @@
 package programus;
 
-import java.util.*;
 
 public class Candy {
 
