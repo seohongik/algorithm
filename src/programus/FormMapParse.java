@@ -2,7 +2,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-class Solution {
+class FormMapParse {
     public void solution() {
     
         List<Map<String, List<String>>> data = new ArrayList<>();
@@ -105,10 +105,10 @@ class Solution {
 
     }
 }
-public class Main {
+class Main {
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        FormMapParse solution = new FormMapParse();
         solution.solution();
     }
 }
