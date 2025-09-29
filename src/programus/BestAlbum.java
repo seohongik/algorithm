@@ -74,9 +74,5 @@ public class BestAlbum {
         int[] plays2 = {500, 600, 150, 800, 2500};
         int[] answer2 = bestAlbum.solution(genres2, plays2);
         System.out.println("Arrays.toString(answer2) = " + Arrays.toString(answer2)); //	[4, 1, 3, 0]
-
-
-
     }
-
 }
