@@ -4,7 +4,7 @@ import java.util.*;
 
 public class StressedHealthInCave {
 
-    // k = 현제 health
+    // k = 현재 health
     //dungeons[0]  던전을 탐험하는데 드는 최소 피로도
     //dungeons[0]  던전을 탐험하는데 드는 소모 피로도
     public int solution(int k, int[][] dungeons) {
