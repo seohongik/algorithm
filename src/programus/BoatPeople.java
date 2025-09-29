@@ -1,3 +1,4 @@
+package programus;
 import java.util.Arrays;
 
 public class BoatPeople {
