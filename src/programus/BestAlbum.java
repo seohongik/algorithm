@@ -15,7 +15,7 @@ public class BestAlbum {
         Set<Integer> bestAlbum = new LinkedHashSet<>();
         List<Integer> index = new ArrayList<>();
         Map<String, List<Integer> > groupPlayTimesByGenre = new HashMap<>();
-        Map<Integer, String> SummingPlayTimesPartitionByGerne = new TreeMap<>(Collections.reverseOrder());
+        Map<Integer, String> summingPlayTimesPartitionByGerne = new TreeMap<>(Collections.reverseOrder());
 
         for (int i = 0; i < genres.length; i++) {
             List<Integer> playTimes = new ArrayList<>();
@@ -31,11 +31,11 @@ public class BestAlbum {
 
         for (Map.Entry<String, List<Integer>> grouping : groupPlayTimesByGenre.entrySet()) {
             int sum =grouping.getValue().stream().mapToInt(i-> i).sum();
-            SummingPlayTimesPartitionByGerne.put(sum,grouping.getKey());
+            summingPlayTimesPartitionByGerne.put(sum,grouping.getKey());
         }
 
 
-        SummingPlayTimesPartitionByGerne.values().forEach(genre -> {
+        summingPlayTimesPartitionByGerne.values().forEach(genre -> {
             Collections.sort(groupPlayTimesByGenre.get(genre), new Comparator<Integer>() {
                 @Override
                 public int compare(Integer o1, Integer o2) {
@@ -44,7 +44,7 @@ public class BestAlbum {
             });
         });
 
-        SummingPlayTimesPartitionByGerne.values().forEach(genre -> {
+        summingPlayTimesPartitionByGerne.values().forEach(genre -> {
 
             int puttingSongInBestAlbumCount = groupPlayTimesByGenre.get(genre).size()==1?1:2;
             for (int i = 0; i < puttingSongInBestAlbumCount; i++) {
