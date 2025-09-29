@@ -39,8 +39,8 @@ public class JulleJulleSameNum {
     public static void main(String[] args) {
         //https://school.programmers.co.kr/learn/courses/30/lessons/12906
         JulleJulleSameNum removeDuplicates = new JulleJulleSameNum();
-        System.out.println(removeDuplicates.solution(new int[]{1,2,2,3}));
-        System.out.println(removeDuplicates.solution2(new int[]{1,2,2,3}));
+        System.out.println(Arrays.toString(removeDuplicates.solution(new int[]{1,2,2,3}))); // [1,2,3]
+        System.out.println(Arrays.toString(removeDuplicates.solution2(new int[]{1,2,2,3})));// [1,2,3]
     }
 
 }
