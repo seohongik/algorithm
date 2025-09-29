@@ -1,20 +1,57 @@
 package progamus;
 public class Star2 {
+
     public static void main(String[] args) {
+        
+        /*
+         데이터 아래와 같이 만들기
+         *****
+         ****
+         ***
+         **
+         * 
+        
+         */
         for (int i = 0; i <5 ; i++) {
+
             for (int j = i; j < 5; j++) {
                 System.out.print("*");
             }
             System.out.println();
         }
         System.out.println("=============================");
+        
+        /*
+
+         데이터 아래와 같이 만들기
+         *
+         **
+         ***
+         ****
+         *****
+                 
+         */
+        
         for (int i = 0; i <5 ; i++) {
+
             for (int j = 0; j < i+1; j++) {
                 System.out.print("*");
             }
             System.out.println();
         }
         System.out.println("=============================");
+        
+        /*
+        데이터 아래와 같이 만들기
+         * * * * *
+          * * * *
+         * * * * *
+          * * * *
+         * * * * *
+         
+        */
+        
+        
         for (int i = 0; i < 5 ; i++) {
             for (int j = 0; j < 9; j++) {
                 if(i%2==0) {
@@ -61,17 +98,19 @@ public class Star2 {
         }
 
         /*
-        데이터 아래와 같이 만들기
+         데이터 아래와 같이 만들기
              *
             ***
            *****
           *******
          *********
+
          000010000
          000111000
          001111100
          011111110
          111111111
+
        */
         System.out.println("=============================");
         int back = 10/2;
