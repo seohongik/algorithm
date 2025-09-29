@@ -2,10 +2,10 @@ package programus;
 
 import java.util.*;
 
-public class NumStrAndWord {
+public class NumStrAndWord { 
 
 
-    public int solution(String s) {
+    public int solution(String s) { // 이건 또 왜이렇게 풀었는지...
         Map<Integer, String> map = new HashMap<>();
 
         String str = "";
