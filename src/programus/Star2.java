@@ -2,15 +2,15 @@ package progamus;
 public class Star2 {
 
     public static void main(String[] args) {
-        
+
         /*
          데이터 아래와 같이 만들기
          *****
          ****
          ***
          **
-         * 
-        
+         *
+
          */
         for (int i = 0; i <5 ; i++) {
 
@@ -20,7 +20,7 @@ public class Star2 {
             System.out.println();
         }
         System.out.println("=============================");
-        
+
         /*
 
          데이터 아래와 같이 만들기
@@ -29,9 +29,9 @@ public class Star2 {
          ***
          ****
          *****
-                 
+
          */
-        
+
         for (int i = 0; i <5 ; i++) {
 
             for (int j = 0; j < i+1; j++) {
@@ -40,7 +40,7 @@ public class Star2 {
             System.out.println();
         }
         System.out.println("=============================");
-        
+
         /*
         데이터 아래와 같이 만들기
          * * * * *
@@ -48,10 +48,10 @@ public class Star2 {
          * * * * *
           * * * *
          * * * * *
-         
+
         */
-        
-        
+
+
         for (int i = 0; i < 5 ; i++) {
             for (int j = 0; j < 9; j++) {
                 if(i%2==0) {
@@ -98,7 +98,7 @@ public class Star2 {
         }
 
         /*
-         데이터 아래와 같이 만들기
+
              *
             ***
            *****
@@ -131,6 +131,28 @@ public class Star2 {
             back--;
             prev++;
             System.out.println();
+
         }
+        System.out.println("=============================");
+        // 이런 방식도 있다. 이게 오히려 수학적 사고를 해게해서 더 좋은 코드인거 같다.(인터넷 펌)
+        // 1. 총 몇 줄 돌리나? 5줄!
+        for (int i=0; i<5; i++) {
+
+            // 2. 공백의 변화 : 4-3-2-1-0
+            for (int j=0; j<5-i ; j++) {
+                System.out.print(" ");
+            }
+
+            // 3. 별표의 변화 : 1-3-5-7-9
+            for (int k=0; k< 2*i +1; k++) {
+                System.out.print("*");
+            }
+
+            //공백과 별표가 한 차례씩 찍히고 나면 줄바꿈을 해야 한다.
+            System.out.println();
+
+        } // 1번 for문 닫음 
+
     }
+
 }
