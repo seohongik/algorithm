@@ -1,7 +1,6 @@
 package programus;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class BestAlbum {
 
@@ -13,11 +12,11 @@ public class BestAlbum {
 
     public int[] solution(String[] genres, int[] plays) {
         Set<Integer> bestAlbum = new LinkedHashSet<>();
-        List<Integer> uniqueIndex = new ArrayList<>();
-        Map<String, List<Integer> > groupPlayTimesByGenre = new HashMap<>();
-        Map<Integer, String> summingPlayTimesPartitionByGerne = new TreeMap<>(Collections.reverseOrder()); // 장르 내에서 많이 재생된 노래 먼저 수록
+        List<Integer> uniqueIndexs = new ArrayList<>(); // 고유번호 list
+        Map<String, List<Integer> > groupPlayTimesByGenre = new HashMap<>(); //장르 내에서 많이 재생된 노래 먼저 수록하기 위한 맵
+        Map<Integer, String> summingPlayTimesPartitionByGerne = new TreeMap<>(Collections.reverseOrder()); //장르별 가장 많이 재생된 노래 수록하기 위한 map 
 
-        for (int i = 0; i < genres.length; i++) { // 장르와 playTime의 길이가 같으니 장르별 플레이 타임(속한노래가 많이 재생된) 장르 먼저 수록하기 위해 도는 포문
+        for (int i = 0; i < genres.length; i++) { // 장르와 playTime의 길이가 같으니 장르별 플레이 타임 장르 먼저 수록하기 위해 도는 포문
             List<Integer> playTimes = new ArrayList<>();
 
             for (int j=0; j<genres.length; j++) {
@@ -25,40 +24,39 @@ public class BestAlbum {
                     playTimes.add(plays[j]);
                 }
             }
-            groupPlayTimesByGenre.put(genres[i],playTimes);
-            uniqueIndex.add(plays[i]); // 고유 번호 (이름 변경 index-> unique index)
+            groupPlayTimesByGenre.put(genres[i],playTimes); //장르별 플레이타임
+            uniqueIndexs.add(plays[i]); // 고유 번호 (이름 변경 index-> unique index) -> 결국이게 베스트엘범이 됨
         }
 
         for (Map.Entry<String, List<Integer>> grouping : groupPlayTimesByGenre.entrySet()) { // 장르별 플레이타입 속한노래가 많이 재생된 장르 구하기
-            int sum =grouping.getValue().stream().mapToInt(i-> i).sum();
-            summingPlayTimesPartitionByGerne.put(sum,grouping.getKey()); // 핵심
+            int playTimeSum =grouping.getValue().stream().mapToInt(i-> i).sum();
+            summingPlayTimesPartitionByGerne.put(playTimeSum,grouping.getKey()); // 장르별 가장많이 재생된 노래 수록하기 위한 map 
         }
 
-
-        summingPlayTimesPartitionByGerne.values().forEach(genre -> { // 장르 내에서 많이 재생된 노래먼저 수록(한번더) 사실 이 매서드 없어도 된
+        summingPlayTimesPartitionByGerne.values().forEach(genre -> { 
             Collections.sort(groupPlayTimesByGenre.get(genre), new Comparator<Integer>() {
                 @Override
-                public int compare(Integer o1, Integer o2) {
+                public int compare(Integer o1, Integer o2) { // 고유번호 낮은 순으로 구하기 위해 역정렬
                     return o2.compareTo(o1);
                 }
             });
         });
+        
+        summingPlayTimesPartitionByGerne.values().forEach(genre -> {
 
-        summingPlayTimesPartitionByGerne.values().forEach(genre -> { // 고유번호 낮은순
-
-            int puttingSongInBestAlbumCount = groupPlayTimesByGenre.get(genre).size()==1?1:2;
+            int puttingSongInBestAlbumCount = groupPlayTimesByGenre.get(genre).size()==1?1:2; //장르 내에서 플레이 타임이 같으면 사이즈가 1이고 아니면 2개까지 수록이 가능
             for (int i = 0; i < puttingSongInBestAlbumCount; i++) {
 
-                for (int j = 0 ; j<uniqueIndex.size(); j++) {
+                for (int j = 0 ; j<uniqueIndexs.size(); j++) { 
                     int maxPlayTimeSong = groupPlayTimesByGenre.get(genre).get(i);
 
-                    if(uniqueIndex.get(j)==maxPlayTimeSong){
+                    if(uniqueIndexs.get(j)==maxPlayTimeSong){ //장르 내에서 재생 횟수가 같은 노래 중에서는 고유 번호가 낮은 노래를 먼저 수록합니다.
                         bestAlbum.add(j);
                     }
                 }
             }
         });
-        return bestAlbum.stream().mapToInt(i->i).toArray();
+        return bestAlbum.stream().mapToInt(i->i).toArray(); // 베스트 엘범
     }
 
     public static void main(String[] args) {
