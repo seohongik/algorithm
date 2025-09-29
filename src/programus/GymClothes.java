@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 
-public class GymClothes {
+public class GymClothes { // 요거 다시풀어보기
 
     public int solution(int n, int[] lost, int[] reserve) {
 
@@ -56,14 +56,11 @@ public class GymClothes {
         List<Integer> list = clothes_map.values().stream().collect(Collectors.toList());
         int sum = 0;
         for (int i = 0; i < list.size(); i++) {
-
             if (list.get(i) == 2) {
-
                 sum += 1;
             } else {
                 sum += list.get(i);
             }
-
         }
         return sum;
     }
