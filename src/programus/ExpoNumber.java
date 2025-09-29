@@ -4,7 +4,7 @@ import java.util.*;
 
 public class ExpoNumber {
     // 효율성에서 떨어짐
-    public int solution(int n) {
+    public int solution1(int n) {
         int answer = 0;
         Deque<Integer> stack = new ArrayDeque<>();
         for (int i = n; i >0; i--) {
@@ -40,7 +40,7 @@ public class ExpoNumber {
         return  answer;
     }
     //성공 왜냐면 1씩 증가하기 때문에 
-    public int solution2(int n) {
+    public int solution3(int n) {
 
         int answer = 0;
         int left =1;
@@ -78,16 +78,16 @@ public class ExpoNumber {
     }
 
     // 이것도 성공 원래 내가 의도한 등차 수열 합 공식
-    public int solution(int n) {
+    public int solution4(int n) {
         int answer = 0;
         int left = 1;
         int right = 1;
         int end = n;
-        
+
         while (left <= end) {
             int count = right - left + 1; // 구간 길이
             int sum = (left + right) * count / 2; // 등차수열 합 공식
-    
+
             if (sum == n) {
                 answer++;
                 right++; // 계속 진행
@@ -97,7 +97,7 @@ public class ExpoNumber {
                 left++;
             }
         }
-     return answer;
+        return answer;
     }
 
     public static void main(String[] args) {
