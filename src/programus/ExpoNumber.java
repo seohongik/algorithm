@@ -39,6 +39,66 @@ public class ExpoNumber {
         }
         return  answer;
     }
+    //성공 왜냐면 1씩 증가하기 때문에 
+    public int solution2(int n) {
+
+        int answer = 0;
+        int left =1;
+        int right =1;
+        int end = n;
+        int sum=0;
+
+        while (left<end) {
+
+            int  count = 0;
+
+            for (int i=left; i<=right; i++) {
+                count++;
+            }
+
+            if(count%2==0) {
+                sum = (left + right) * ((int)count / 2);
+            }else {
+                sum = (left + right) * ((int)count / 2) +((left + right) / 2);
+            }
+
+            if(sum==n) {
+                answer++;
+            }else if(sum>n) {
+                left++;
+                right=left;
+            }
+            right++;
+        }
+
+        if(left<=end){
+            answer++;
+        }
+        return  answer;
+    }
+
+    // 이것도 성공 원래 내가 의도한 등차 수열 합 공식
+    public int solution(int n) {
+        int answer = 0;
+        int left = 1;
+        int right = 1;
+        int end = n;
+        
+        while (left <= end) {
+            int count = right - left + 1; // 구간 길이
+            int sum = (left + right) * count / 2; // 등차수열 합 공식
+    
+            if (sum == n) {
+                answer++;
+                right++; // 계속 진행
+            } else if (sum < n) {
+                right++;
+            } else {
+                left++;
+            }
+        }
+     return answer;
+    }
 
     public static void main(String[] args) {
         ExpoNumber expoNumber = new ExpoNumber();
