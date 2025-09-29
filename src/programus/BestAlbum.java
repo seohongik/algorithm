@@ -13,11 +13,11 @@ public class BestAlbum {
 
     public int[] solution(String[] genres, int[] plays) {
         Set<Integer> bestAlbum = new LinkedHashSet<>();
-        List<Integer> index = new ArrayList<>();
+        List<Integer> uniqueIndex = new ArrayList<>();
         Map<String, List<Integer> > groupPlayTimesByGenre = new HashMap<>();
-        Map<Integer, String> summingPlayTimesPartitionByGerne = new TreeMap<>(Collections.reverseOrder());
+        Map<Integer, String> summingPlayTimesPartitionByGerne = new TreeMap<>(Collections.reverseOrder()); // 장르 내에서 많이 재생된 노래 먼저 수록
 
-        for (int i = 0; i < genres.length; i++) {
+        for (int i = 0; i < genres.length; i++) { // 장르와 playTime의 길이가 같으니 장르별 플레이 타임(속한노래가 많이 재생된) 장르 먼저 수록하기 위해 도는 포문
             List<Integer> playTimes = new ArrayList<>();
 
             for (int j=0; j<genres.length; j++) {
@@ -26,16 +26,16 @@ public class BestAlbum {
                 }
             }
             groupPlayTimesByGenre.put(genres[i],playTimes);
-            index.add(plays[i]);
+            uniqueIndex.add(plays[i]); // 고유 번호 (이름 변경 index-> unique index)
         }
 
-        for (Map.Entry<String, List<Integer>> grouping : groupPlayTimesByGenre.entrySet()) {
+        for (Map.Entry<String, List<Integer>> grouping : groupPlayTimesByGenre.entrySet()) { // 장르별 플레이타입 속한노래가 많이 재생된 장르 구하기
             int sum =grouping.getValue().stream().mapToInt(i-> i).sum();
-            summingPlayTimesPartitionByGerne.put(sum,grouping.getKey());
+            summingPlayTimesPartitionByGerne.put(sum,grouping.getKey()); // 핵심
         }
 
 
-        summingPlayTimesPartitionByGerne.values().forEach(genre -> {
+        summingPlayTimesPartitionByGerne.values().forEach(genre -> { // 장르 내에서 많이 재생된 노래먼저 수록(한번더) 사실 이 매서드 없어도 된
             Collections.sort(groupPlayTimesByGenre.get(genre), new Comparator<Integer>() {
                 @Override
                 public int compare(Integer o1, Integer o2) {
@@ -44,15 +44,15 @@ public class BestAlbum {
             });
         });
 
-        summingPlayTimesPartitionByGerne.values().forEach(genre -> {
+        summingPlayTimesPartitionByGerne.values().forEach(genre -> { // 고유번호 낮은순
 
             int puttingSongInBestAlbumCount = groupPlayTimesByGenre.get(genre).size()==1?1:2;
             for (int i = 0; i < puttingSongInBestAlbumCount; i++) {
 
-                for (int j = 0 ; j<index.size(); j++) {
+                for (int j = 0 ; j<uniqueIndex.size(); j++) {
                     int maxPlayTimeSong = groupPlayTimesByGenre.get(genre).get(i);
 
-                    if(index.get(j)==maxPlayTimeSong){
+                    if(uniqueIndex.get(j)==maxPlayTimeSong){
                         bestAlbum.add(j);
                     }
                 }
@@ -63,6 +63,7 @@ public class BestAlbum {
 
     public static void main(String[] args) {
 
+        //https://school.programmers.co.kr/learn/courses/30/lessons/42579
         BestAlbum bestAlbum = new BestAlbum();
         String[] genres = {"classic", "pop", "classic", "pop", "classic", "classic"};
         int[] plays = {400, 600, 150, 600, 500, 500};
