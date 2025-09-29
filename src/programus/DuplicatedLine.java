@@ -25,7 +25,7 @@ public class DuplicatedLine {
     public List<Integer> makeLine(int[] lines) {
 
         List<Integer> line = new ArrayList<>();
-        for (int i = lines[0]; i < lines[1]; i++) {
+        for (int i = lines[0]; i < lines[1]; i++) { // <= 아니라 <인 이유 : [0,1]이면 길이를 1로 보기 때문에 결국 길이 때문이다
             line.add(i);
         }
         return line;
