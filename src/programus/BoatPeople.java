@@ -10,8 +10,8 @@ public class BoatPeople {
         int start=0; // 투포인터 시작점 증가 변수
         int end=people.length-1; // 투포인터 엔드 점 증가 변수
         while (start<=end){ //
-            if(people[start]+people[end]<=limit) { // 둘이 합쳐서 테울수 있는지
-                start++; // 테웠으면 가벼운 사람 증가
+            if(people[start]+people[end]<=limit) { // 둘이 합쳐서 태울수 있는지
+                start++; // 태웠으면 가벼운 사람 증가
             }
             end--; // 무게있는 사람은 무조건 감소
             ans++; // 보트 타기
