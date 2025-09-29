@@ -4,7 +4,7 @@ import java.util.*;
 
 public class JulleJulleSameNum {
 
-    public int[] solution(int[] arr) {
+    public int[] solution(int[] arr) { // 20250929 기준 지금 보면 이거 왜 이렇게 풀었는지 모르겠음.....
 
         ArrayList<Integer> list = new ArrayList<Integer>();
         Deque<Integer> dq = new LinkedList<>();
@@ -21,6 +21,26 @@ public class JulleJulleSameNum {
 
         return list.stream().mapToInt(Integer::intValue)
                 .toArray();
+    }
+
+    public int[] solution2(int[] nums){ // 새로운 풀이
+
+        Stack<Integer> stack = new Stack<>();
+
+        stack.push(nums[0]);
+        for (int i = 1; i < nums.length; i++) {
+            if(stack.peek()!=nums[i]){
+                stack.push(nums[i]);
+            }
+        }
+        return stack.stream().mapToInt(Integer::intValue).toArray();
+    }
+
+    public static void main(String[] args) {
+        //https://school.programmers.co.kr/learn/courses/30/lessons/12906
+        JulleJulleSameNum removeDuplicates = new JulleJulleSameNum();
+        System.out.println(removeDuplicates.removeDuplicates(new int[]{1,2,2,3}));
+        System.out.println(removeDuplicates.removeDuplicates2(new int[]{1,2,2,3}));
     }
 
 }
