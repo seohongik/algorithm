@@ -33,22 +33,22 @@ public class FormMapParse {
         System.out.println("result1 = " + result1);
     }
 
-    public void sol2(List<Map<String, List<String>>> data){
+   public void sol2(List<Map<String, List<String>>> data){
 
         List<List<String>> valuesList = new ArrayList<>();
         List<Map<String, String>> result = new ArrayList<>();
         List<String> keys =List.of("sn","yn"); // value 먼저 파싱하고 인서트 이러려면 filter걸어 줬어야함 inputname 필요한 값만 처리하려고 했습니다.
 
-        List<Map<String, List<String>>> parseMap = new ArrayList<>();
+        List<Map<String, List<String>>> parseMapList = new ArrayList<>();
         data.stream().forEach(linkedHashMap -> {
             linkedHashMap.entrySet().stream().filter(entry -> keys.contains(entry.getKey())).forEach(entry -> {
-                parseMap.add(Map.of(entry.getKey(),entry.getValue())); // 불변
+                parseMapList.add(Map.of(entry.getKey(),entry.getValue())); // 불변
             });
         });
 
-        for (int i = 0; i <parseMap.size(); i++) {
-            for (int j = 0; j < parseMap.get(i).size();j++){
-                valuesList.add(parseMap.get(i).get(keys.get(i)));
+        for (int i = 0; i <parseMapList.size(); i++) {
+            for (int j = 0; j < parseMapList.get(i).size();j++){
+                valuesList.add(parseMapList.get(i).get(keys.get(i)));
             }
         }
 
