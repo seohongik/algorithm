@@ -118,7 +118,7 @@ public class FormMapParse {
         // 반대로 풀어보기 key 먼저 value 나중에
         Stack<Integer> stack = new Stack<>();
         List<String> keys = List.of("sn","yn");
-        for (int i=0; i<keys.size(); i++){
+        for (int i = 0; i<keys.size(); i++){
             int count = 0;
             for (int j =0; j<data.get(0).get(keys.get(0)).size();j++) {
                 stack.push(count);
@@ -143,7 +143,6 @@ public class FormMapParse {
         }
         System.out.println("result4 = "+list);
     }
-    
     public void sol5(List<Map<String, List<String>>> data){
         List<Map<String, String>> result = new ArrayList<>();
         List<String> keyList = List.of("sn","yn");
