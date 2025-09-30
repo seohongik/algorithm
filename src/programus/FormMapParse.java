@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 
 public class FormMapParse {
     public void solution(List<Map<String, List<String>>> data) {
-        // 만약 value size가 다르면 여기서 temp값 padding처서 가공해서 각 사이즈 똑같이 만들어 주면 됨
+        // 만약 value size가 다르면 여기서 temp값 padding처서 가공해서 각 사이즈 똑같이 만들어 주면 됨 그 후 무쓸모 데이터 필터 또는 리무브 
         
         sol1(data);
         sol2(data);
