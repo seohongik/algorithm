@@ -23,7 +23,6 @@ public class FormMapParse {
         int maxSize =  data.get(0).get(keys.get(0)).size();
         for (int i = 1; i < keys.size(); i++) {
             maxSize = Math.max(data.get(i-1).get(keys.get(i-1)).size(),data.get(i).get(keys.get(i)).size());
-
             if(maxSize < data.get(i).get(keys.get(i)).size()) {
                 maxSize = data.get(i).get(keys.get(i)).size();
             }
