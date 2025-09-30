@@ -6,13 +6,15 @@ import java.util.stream.IntStream;
 
 public class FormMapParse {
     public void solution(List<Map<String, List<String>>> data) {
+        // 만약 value size가 다르면 여기서 temp값 padding처서 가공해서 각 사이즈 똑같이 만들어 주면 됨
+        
         sol1(data);
         sol2(data);
         sol3(data);
         sol4(data);
         sol5(data);
         // 만약 AJAX였으면 [{sn=1,yn=4},{sn=2,yn=5},{sn=3,yn=6}]= 으로 넘어왔기에
-        // objectMapper 로 keySet().toString(); 받아서 json 파싱하고 걍 for문 돌려서 넣으려고 했습니다.
+        // objectMapper 로 keySet().toString(); 받아서 json 파싱하고 걍 for문 돌려서 넣으려고 함.
 
         return;
     }
