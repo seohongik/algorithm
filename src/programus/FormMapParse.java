@@ -10,6 +10,7 @@ public class FormMapParse {
         sol2(data);
         sol3(data);
         sol4(data);
+        sol5(data);
         // 만약 AJAX였으면 [{sn=1,yn=4},{sn=2,yn=5},{sn=3,yn=6}]= 으로 넘어왔기에
         // objectMapper 로 keySet().toString(); 받아서 json 파싱하고 걍 for문 돌려서 넣으려고 했습니다.
 
@@ -33,7 +34,7 @@ public class FormMapParse {
         System.out.println("result1 = " + result1);
     }
 
-   public void sol2(List<Map<String, List<String>>> data){
+    public void sol2(List<Map<String, List<String>>> data){
 
         List<List<String>> valuesList = new ArrayList<>();
         List<Map<String, String>> result = new ArrayList<>();
@@ -117,26 +118,51 @@ public class FormMapParse {
         }
         System.out.println("result4 = "+list);
     }
+    
+    public void sol5(List<Map<String, List<String>>> data){
+
+        List<Map<String, String>> result = new ArrayList<>();
+        List<String> keyList = List.of("sn","yn");
+        List<List<String>> values = new ArrayList<>();
+        List<String> keys = data.stream().map(Map::keySet).flatMap(Collection::stream).collect(Collectors.toList());
+        
+        for (int i=0; i<keys.size(); i++) {
+            List<List<String>> tempValue = new ArrayList<>(data.get(i).values());
+            values.addAll(tempValue);
+        }
+        for (int i = 0; i < values.get(0).size(); i++) {
+            Map<String, String> map = new LinkedHashMap<>();
+            for (int j = 0; j < keys.size(); j++) {
+                if(keyList.contains(keys.get(j))) {
+                    map.put(keys.get(j), values.get(j).get(i));
+                }
+            }
+            result.add(map);
+        }
+
+        System.out.println("result5 = " + result);
+        
+    }
 
 
     public static void main(String[] args) {
         List<Map<String, List<String>>> data = new ArrayList<>();
-        List<String> values = List.of("1","2","3");
+        List<String> values = List.of("1","2","3","4");
         Map<String, List<String>> map1 = new LinkedHashMap<>();
         map1.put("sn", values);
 
-        List<String> values2 = List.of("4","5","6");
+        List<String> values2 = List.of("5","6","6","7");
         Map<String, List<String>> map2 = new LinkedHashMap<>();
         map2.put("yn", values2);
 
-        List<String> values3 = List.of("on","on","on");
+        List<String> values3 = List.of("on","on","on","on");
         Map<String, List<String>> map3 = new LinkedHashMap<>();
         map3.put("on", values3);
 
         data.add(map1);
         data.add(map2);
         data.add(map3);
-        FormMapParse solution = new FormMapParse();
+        Solution solution = new Solution();
         solution.solution(data);
     }
 }
