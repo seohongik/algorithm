@@ -6,8 +6,8 @@ import java.util.stream.IntStream;
 
 public class FormMapParse {
     public void solution(List<Map<String, List<String>>> data) {
-        // 만약 value size가 다르면 여기서 temp값 padding처서 가공해서 각 사이즈 똑같이 만들어 주면 됨 그 후 무쓸모 데이터 필터 또는 리무브 
-        
+        // 만약 value size가 다르면 여기서 temp값 padding처서 가공해서 각 사이즈 똑같이 만들어 주면 됨 그 후 filter로 거르기
+
         sol1(data);
         sol2(data);
         sol3(data);
@@ -44,8 +44,11 @@ public class FormMapParse {
 
         List<Map<String, List<String>>> parseMapList = new ArrayList<>();
         data.stream().forEach(linkedHashMap -> {
+            Map<String, List<String>> map = new LinkedHashMap<>();
             linkedHashMap.entrySet().stream().filter(entry -> keys.contains(entry.getKey())).forEach(entry -> {
-                parseMapList.add(Map.of(entry.getKey(),entry.getValue())); // 불변
+                //parseMapList.add(Map.of(entry.getKey(),entry.getValue())); // 불변 최대 10개요소 조회 가능
+                map.putAll(Map.ofEntries(entry));
+                parseMapList.add(map);
             });
         });
 
@@ -101,6 +104,7 @@ public class FormMapParse {
                 count++;
             }
         }
+
         stack.sort(new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
@@ -129,8 +133,8 @@ public class FormMapParse {
         List<String> keys = data.stream().map(Map::keySet).flatMap(Collection::stream).collect(Collectors.toList());
         
         for (int i=0; i<keys.size(); i++) {
-            List<List<String>> tempValue = new ArrayList<>(data.get(i).values());
-            values.addAll(tempValue);
+            List<List<String>> tempValues = new ArrayList<>(data.get(i).values());
+            values.addAll(tempValues);
         }
         for (int i = 0; i < values.get(0).size(); i++) {
             Map<String, String> map = new LinkedHashMap<>();
@@ -145,7 +149,6 @@ public class FormMapParse {
         System.out.println("result5 = " + result);
         
     }
-
 
     public static void main(String[] args) {
         List<Map<String, List<String>>> data = new ArrayList<>();
@@ -165,6 +168,7 @@ public class FormMapParse {
         data.add(map2);
         data.add(map3);
         Solution solution = new Solution();
+        System.out.println("data = " + data);
         solution.solution(data);
     }
 }
