@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class Solution {
+public class FormMapParse {
     public void solution(List<Map<String, List<String>>> data) {
         sol1(data);
         sol2(data);
@@ -136,7 +136,7 @@ public class Solution {
         data.add(map1);
         data.add(map2);
         data.add(map3);
-        Solution solution = new Solution();
+        FormMapParse solution = new FormMapParse();
         solution.solution(data);
     }
 }
