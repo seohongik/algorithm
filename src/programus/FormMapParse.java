@@ -153,7 +153,7 @@ public class FormMapParse {
         Map<String, List<String>> map1 = new LinkedHashMap<>();
         map1.put("sn", values);
 
-        List<String> values2 = List.of("5","6","6","7");
+        List<String> values2 = List.of("5","6","7","8");
         Map<String, List<String>> map2 = new LinkedHashMap<>();
         map2.put("yn", values2);
 
