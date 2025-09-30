@@ -7,32 +7,65 @@ import java.util.stream.IntStream;
 public class FormMapParse {
     public void solution(List<Map<String, List<String>>> data) {
         // 만약 value size가 다르면 여기서 temp값 padding처서 가공해서 각 사이즈 똑같이 만들어 주면 됨 그 후 filter로 거르기
-
-        sol1(data);
-        sol2(data);
-        sol3(data);
-        sol4(data);
-        sol5(data);
+        sol1(paddingValue(data));
+        sol2(paddingValue(data));
+        sol3(paddingValue(data));
+        sol4(paddingValue(data));
+        sol5(paddingValue(data));
         // 만약 AJAX였으면 [{sn=1,yn=4},{sn=2,yn=5},{sn=3,yn=6}]= 으로 넘어왔기에
         // objectMapper 로 keySet().toString(); 받아서 json 파싱하고 걍 for문 돌려서 넣으려고 함.
-
         return;
+    }
+
+    public List<Map<String, List<String>>> paddingValue(List<Map<String, List<String>>> data) {
+
+        List<String> keys = List.of("sn","yn");
+        int maxSize =  data.get(0).get(keys.get(0)).size();
+        for (int i = 1; i < keys.size(); i++) {
+            maxSize = Math.max(data.get(i-1).get(keys.get(i-1)).size(),data.get(i).get(keys.get(i)).size());
+
+            if(maxSize < data.get(i).get(keys.get(i)).size()) {
+                maxSize = data.get(i).get(keys.get(i)).size();
+            }
+        }
+
+        if(maxSize < data.get(keys.size()-1).get(keys.get(keys.size()-1)).size()) {
+            maxSize = data.get(keys.size()-1).get(keys.get(keys.size()-1)).size();
+        }
+
+        List<Map<String, List<String>>> paddingMapList = new ArrayList<>();
+        for (int i = 0; i < keys.size(); i++) {
+            Map<String, List<String>> map = new LinkedHashMap<>();
+            List<String> values =data.get(i).get(keys.get(i));
+
+            List<String> newValues = new ArrayList<>(values);
+
+            int count=newValues.size();
+            if(newValues.size() < maxSize) {
+                while (count<maxSize) {
+                    newValues.add("-1");
+                    count++;
+                }
+            }
+            map.put(keys.get(i), newValues);
+            paddingMapList.add(map);
+        }
+
+
+        return paddingMapList;
     }
 
     public void sol1(List<Map<String, List<String>>> data){
         List<Map<String, String>> result1 = new ArrayList<>();
-
         String[] keys2 = new String[]{"sn","yn"};
         for (int i = 0; i<data.get(0).get(keys2[0]).size();i++) {
             Map<String, String> map = new LinkedHashMap<>();
             for (int j =0; j<keys2.length; j++){
-
                 String value = data.get(j).get(keys2[j]).get(i);
                 map.put(keys2[j],value);
             }
             result1.add(map);
         }
-
         System.out.println("result1 = " + result1);
     }
 
@@ -47,7 +80,7 @@ public class FormMapParse {
             Map<String, List<String>> map = new LinkedHashMap<>();
             linkedHashMap.entrySet().stream().filter(entry -> keys.contains(entry.getKey())).forEach(entry -> {
                 //parseMapList.add(Map.of(entry.getKey(),entry.getValue())); // 불변 최대 10개요소 조회 가능
-                map.putAll(Map.ofEntries(entry));
+                map.putAll(Map.ofEntries(entry)); //불변 제한 없음
                 parseMapList.add(map);
             });
         });
@@ -65,16 +98,13 @@ public class FormMapParse {
             }
             result.add(map);
         }
-
         System.out.println("result2 = " + result);
     }
 
     public void sol3(List<Map<String, List<String>>> data){
-
         // Collectors.groupBy는 인덱스 기준으로 안묶임 이건 못해서 다른방법으로 gpt한테 배움
         List<String> keys = List.of("sn","yn");
         int size = data.get(0).get(keys.get(0)).size();
-
         LinkedHashMap<Integer, Map<String, String>> result = IntStream.range(0, size)
                 .boxed()
                 .collect(Collectors.toMap(
@@ -90,7 +120,6 @@ public class FormMapParse {
                 ));
 
         System.out.println("result3 = " + result);
-
     }
 
     public void sol4(List<Map<String, List<String>>> data){
@@ -136,6 +165,7 @@ public class FormMapParse {
             List<List<String>> tempValues = new ArrayList<>(data.get(i).values());
             values.addAll(tempValues);
         }
+
         for (int i = 0; i < values.get(0).size(); i++) {
             Map<String, String> map = new LinkedHashMap<>();
             for (int j = 0; j < keys.size(); j++) {
@@ -152,7 +182,7 @@ public class FormMapParse {
 
     public static void main(String[] args) {
         List<Map<String, List<String>>> data = new ArrayList<>();
-        List<String> values = List.of("1","2","3","4");
+        List<String> values = List.of("1","2","3","4","9");
         Map<String, List<String>> map1 = new LinkedHashMap<>();
         map1.put("sn", values);
 
