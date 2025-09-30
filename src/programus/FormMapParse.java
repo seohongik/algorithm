@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 
 public class FormMapParse {
     public void solution(List<Map<String, List<String>>> data) {
-        // 만약 value size가 다르면 여기서 temp값 padding처서 가공해서 각 사이즈 똑같이 만들어 주면 됨 그 후 filter로 거르기
+        // 만약 value size가 다르면 여기서 temp값 padding처서 가공해서 각 사이즈 똑같이 만들어 주면 됨 그 후 화면단 제어
         sol1(paddingValue(data));
         sol2(paddingValue(data));
         sol3(paddingValue(data));
@@ -27,18 +27,14 @@ public class FormMapParse {
                 maxSize = data.get(i).get(keys.get(i)).size();
             }
         }
-
         if(maxSize < data.get(keys.size()-1).get(keys.get(keys.size()-1)).size()) {
             maxSize = data.get(keys.size()-1).get(keys.get(keys.size()-1)).size();
         }
-
         List<Map<String, List<String>>> paddingMapList = new ArrayList<>();
         for (int i = 0; i < keys.size(); i++) {
             Map<String, List<String>> map = new LinkedHashMap<>();
             List<String> values =data.get(i).get(keys.get(i));
-
             List<String> newValues = new ArrayList<>(values);
-
             int count=newValues.size();
             if(newValues.size() < maxSize) {
                 while (count<maxSize) {
@@ -49,8 +45,6 @@ public class FormMapParse {
             map.put(keys.get(i), newValues);
             paddingMapList.add(map);
         }
-
-
         return paddingMapList;
     }
 
@@ -73,7 +67,6 @@ public class FormMapParse {
         List<List<String>> valuesList = new ArrayList<>();
         List<Map<String, String>> result = new ArrayList<>();
         List<String> keys =List.of("sn","yn"); // value 먼저 파싱하고 인서트 이러려면 filter걸어 줬어야함 inputname 필요한 값만 처리하려고 했습니다.
-
         List<Map<String, List<String>>> parseMapList = new ArrayList<>();
         data.stream().forEach(linkedHashMap -> {
             Map<String, List<String>> map = new LinkedHashMap<>();
@@ -132,14 +125,12 @@ public class FormMapParse {
                 count++;
             }
         }
-
         stack.sort(new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
                 return o2-o1;
             }
         });
-
         List<Map<String,String>> list = new ArrayList<>();
         while(!stack.isEmpty()){
             Map<String,String> map = new LinkedHashMap<>();
@@ -154,17 +145,14 @@ public class FormMapParse {
     }
     
     public void sol5(List<Map<String, List<String>>> data){
-
         List<Map<String, String>> result = new ArrayList<>();
         List<String> keyList = List.of("sn","yn");
         List<List<String>> values = new ArrayList<>();
         List<String> keys = data.stream().map(Map::keySet).flatMap(Collection::stream).collect(Collectors.toList());
-        
         for (int i=0; i<keys.size(); i++) {
             List<List<String>> tempValues = new ArrayList<>(data.get(i).values());
             values.addAll(tempValues);
         }
-
         for (int i = 0; i < values.get(0).size(); i++) {
             Map<String, String> map = new LinkedHashMap<>();
             for (int j = 0; j < keys.size(); j++) {
@@ -174,9 +162,7 @@ public class FormMapParse {
             }
             result.add(map);
         }
-
         System.out.println("result5 = " + result);
-        
     }
 
     public static void main(String[] args) {
@@ -192,7 +178,7 @@ public class FormMapParse {
         List<String> values3 = List.of("on","on","on","on");
         Map<String, List<String>> map3 = new LinkedHashMap<>();
         map3.put("on", values3);
-
+        
         data.add(map1);
         data.add(map2);
         data.add(map3);
