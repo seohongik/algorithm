@@ -182,8 +182,9 @@ public class FormMapParse {
         data.add(map2);
         data.add(map3);
         Solution solution = new Solution();
+        FormMapParse formMapParse = new FormMapParse();
+        formMapParse.sol2(data);
         System.out.println("data = " + data);
-        solution.solution(data);
     }
 }
 
