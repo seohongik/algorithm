@@ -15,15 +15,11 @@ import java.util.*;
 
 class Solution {
     public int  solution(int songEA,int dvdEA, int[] songTime){
-
         int lt = Arrays.stream(songTime).max().getAsInt();
         int rt = Arrays.stream(songTime).sum();
-
         int ans = 0;
         while (lt <= rt){
-
             int mid = (lt + rt) / 2;
-
             if(isPuttable(songTime, mid)<=dvdEA){
                 ans= mid;
                 rt = mid-1;
@@ -33,11 +29,9 @@ class Solution {
         }
         return ans-1;
     }
-
     int isPuttable(int[] songTime, int capacity){
         int count =1;
         int sum = 0;
-
         for (int x : songTime){
             if(sum+x<capacity){
                 sum += x;
@@ -46,12 +40,11 @@ class Solution {
                 sum = x;
             }
         }
-
         return count;
     }
-
-
 }
+
+
 public class Main {
 
     public static void main(String[] args){
