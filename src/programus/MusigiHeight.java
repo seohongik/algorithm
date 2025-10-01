@@ -7,7 +7,6 @@ import java.util.List;
 
 public class MusigiHeight{
     public int solution(int[] array, int height) {// 그냥 이분탐색이지 뭐
-
         Arrays.sort(array);
         int start =0;
         int end =array.length-1;
