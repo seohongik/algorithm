@@ -7,6 +7,7 @@ import java.util.List;
 
 public class MusigiHeight{
     public int solution(int[] array, int height) {// 그냥 이분탐색이지 뭐
+        // 머쓱이 height보타 큰 사람 구하기
         Arrays.sort(array);
         int start =0;
         int end =array.length-1;
