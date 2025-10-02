@@ -31,7 +31,7 @@ public class MusigiHeight{
         MusigiHeight m = new MusigiHeight();
         System.out.println(m.solution(new int[]{149, 180, 192, 170}, 167	)); //3
         System.out.println(m.solution(new int[]{180, 120, 140}, 190	)); //0
-        System.out.println(m.solution(new int[]{200}, 200	)); //1
+        System.out.println(m.solution(new int[]{200}, 200	)); //0
     }
 
 }
