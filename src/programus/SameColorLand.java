@@ -60,7 +60,6 @@ public class SameColorLand {
                 , {"blue", "green", "yellow"}
                 , {"yellow", "blue", "blue"}
         }, 0, 1);
-
         System.out.println(count2);
     }
 
