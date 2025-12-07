@@ -10,6 +10,7 @@ public class ParkWalk {
         int current_x = -1; // 현재 행 인덱스
         int current_y = -1; // 현재 열 인덱스
 
+
         // 1. 시작점 'S' 찾기
         for (int i = 0; i < H; i++) {
             for (int j = 0; j < W; j++) {
