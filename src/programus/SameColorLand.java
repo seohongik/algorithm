@@ -22,10 +22,10 @@ public class SameColorLand {
                 colMap.put(i+","+j, board[j][i]);
             }
         }
-        String leftValue = rowMap.get( left+ ","+w);
-        String rightValue = rowMap.get( right+ ","+w);
-        String topValue = rowMap.get( h+","+top);
-        String bottomValue = rowMap.get( h+","+bottom);
+        String leftValue = rowMap.get( h+","+left);
+        String rightValue = rowMap.get( h+","+right);
+        String topValue = rowMap.get( w+","+top);
+        String bottomValue = rowMap.get( w+","+bottom);
         int count = 0;
 
         if(leftValue!=null&&leftValue.equals(self)){
