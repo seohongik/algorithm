@@ -22,12 +22,9 @@ public class DartGame {
 
             if (dartResult.charAt(i) == '*') {
                 list.add(Integer.MAX_VALUE);
-            }
-            if (dartResult.charAt(i) == '#') {
+            }else if (dartResult.charAt(i) == '#') {
                 list.add(Integer.MIN_VALUE);
-            }
-
-            if (dartResult.charAt(i) == 'S') {
+            }else if (dartResult.charAt(i) == 'S') {
                 list.add((int) Math.pow(score, 1));
             } else if (dartResult.charAt(i) == 'D') {
                 list.add((int) Math.pow(score, 2));
