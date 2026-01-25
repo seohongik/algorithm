@@ -59,7 +59,7 @@ public class SwordOfNights {
     private int countDivisors(int n) {
         int count = 0;
         for (int i = 1; i <= Math.sqrt(n); i++) {
-            if (i * i == n) {
+            if (i == Math.sqrt(n)) {
                 count++; // 제곱근인 경우 (ex: 4의 약수 중 2) 하나만 추가
             } else if (n % i == 0) {
                 count += 2; // i가 약수라면 n/i도 약수이므로 두 개 추가
