@@ -5,10 +5,7 @@ import java.util.stream.Collectors;
 
 public class SpoilerWords {
     public int solution(String message, int[][] spoiler_ranges) {
-        int answer = 0;
-
         String[] mask = new String[message.length()];
-
         for (int i = 0; i < mask.length; i++) {
             mask[i] = message.substring(i, i + 1);
         }
@@ -41,10 +38,7 @@ public class SpoilerWords {
                 map.put(origin[i], map.getOrDefault(origin[i], 0) - 1);
             }
         }
-        answer=(int)map.values().stream().filter(i->i<=0).count();
-
-
-        return answer;
+        return (int)map.values().stream().filter(i->i<=0).count();
     }
 
     public static void main(String[] args) {
