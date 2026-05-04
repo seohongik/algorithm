@@ -1,4 +1,4 @@
-package easyspub;
+package easyspub.priorChapter;
 
 import java.io.*;
 import java.util.StringTokenizer;

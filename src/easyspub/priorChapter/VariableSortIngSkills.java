@@ -1,4 +1,4 @@
-package easyspub;
+package easyspub.priorChapter;
 
 import java.util.Arrays;
 import java.util.Collections;

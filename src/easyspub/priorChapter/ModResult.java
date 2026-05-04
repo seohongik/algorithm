@@ -1,4 +1,4 @@
-package easyspub;
+package easyspub.priorChapter;
 
 public class ModResult {
 
