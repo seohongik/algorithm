@@ -35,8 +35,8 @@ public class SlidingMinValue {
         }
         int last = L;
         List<Integer> slidingList =new ArrayList<>();
-        for (int rt=L; rt <N+L-1; rt++) {
-            int lt = last-2;
+        for (int rt=L; rt <array.length+L; rt++) {
+            int lt = last-L;
             myListLogic(array[lt],slidingList,L,minValueArray,lt);
             last++;
         }
