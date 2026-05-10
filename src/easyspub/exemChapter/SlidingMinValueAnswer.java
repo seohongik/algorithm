@@ -3,6 +3,7 @@ package easyspub.exemChapter;
 import java.io.*;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.Objects;
 import java.util.StringTokenizer;
 
 /*
@@ -39,12 +40,12 @@ public class SlidingMinValueAnswer {
 
             // 핵심 로직 3: 윈도우 범위를 벗어난 값(오래된 값)을 앞에서 제거한다.
             // 현재 인덱스(i)에서 윈도우 크기(L)를 뺀 것보다 작거나 같은 인덱스는 버림
-            if (deque.peekFirst().index <= i - L) {
+            if (Objects.requireNonNull(deque.peekFirst()).index <= i - L) {
                 deque.removeFirst();
             }
 
             // 핵심 로직 4: 덱의 맨 앞(First)은 항상 현재 윈도우의 최솟값이다.
-            bw.write(deque.peekFirst().value + " ");
+            bw.write(Objects.requireNonNull(deque.peekFirst()).value + " ");
         }
 
         bw.flush();
