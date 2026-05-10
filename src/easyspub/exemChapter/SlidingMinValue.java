@@ -11,7 +11,7 @@ public class SlidingMinValue {
     1 5 2 3 6 2 3 7 3 5 2 6
     * */
     public static void main(String[] args) throws IOException {
-        myListLoginMain(); // 시간 복잡도 상당함 Collections.min() 때문에
+        myListLoginMain(); // 시간 복잡도 상당함 Collections.min() 때문에 remove로직도 그렇고..
     }
 
     private static void myListLoginMain() throws IOException {
