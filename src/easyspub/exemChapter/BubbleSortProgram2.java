@@ -58,6 +58,7 @@ public class BubbleSortProgram2 {
     }
 
     private static List<BubbleSortProgram2> mergeSort(List<BubbleSortProgram2> left,List<BubbleSortProgram2> right) {
+
         List<BubbleSortProgram2> result = new ArrayList<>();
         int lt= 0;
         int rt= 0;
