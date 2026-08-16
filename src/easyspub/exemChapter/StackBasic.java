@@ -47,9 +47,6 @@ public class StackBasic {
             }
         }
 
-        if(!stack.isEmpty()) {
-            return "NO";
-        }
         return sb.toString();
     }
 }
