@@ -34,7 +34,7 @@ public class NQueenBackTracking {
                     check = false;
                     break;
                 }
-                if(Math.abs(chessBoard[j] - chessBoard[row]) == Math.abs(row - j)) {/*대각선 공격*/
+                if(Math.abs(chessBoard[j] - chessBoard[row]) == Math.abs(row - j)) {/*대각선 공격 열의차이==행의차이  */
                     check = false;
                     break;
                 }
